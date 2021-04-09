@@ -1,4 +1,5 @@
-console.log("hello world")
+console.log("Welcome to Rock Paper Scissors Game!")
+console.log("type game() to play!")
 
 let computerPlay = () => {
    let number = Math.floor(Math.random() * 3) + 1
@@ -18,37 +19,52 @@ let computerScore = 0
 
 
 let playRound = (playerSelection,computerSelection) => {
-    playerSelection = prompt().toLowerCase()
+    playerSelection = prompt("Choose rock,paper or scissors").toLowerCase()
     computerSelection = computerPlay()
     if (playerSelection === "rock" && computerSelection === "rock"){
-        return "its a tie"
+        yourScore++
+        computerScore++
+        return "Rock to Rock"
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        return "computer Won"
         computerScore++
+        return "Paper beats Rock!"
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You Won"
         yourScore++
+        return "Rock beats Scissors!"
     } else if (playerSelection === "paper" && computerSelection === "paper"){
-        return "its a tie"
+        yourScore++
+        computerScore++
+        return "Paper to Paper"
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "computer Won"
         computerScore++
+        return "Scissors beats Paper!"
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You Won"
         yourScore++
+        return "Paper Beats Rock!"
     } else if (playerSelection === "scissors" && computerSelection === "scissors"){
-        return "its a tie"
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "computer Won"
-        computerScore++
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You Won"
         yourScore++
+        computerScore++
+        return "Scissors to Scissors"
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        computerScore++
+        return "Rock beats Scissors!"
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        yourScore++
+        return "Scissors beats Paper"
     } 
 }
 
 let game = () => {
     for (let i = 0; i<5; i++){
         console.log(playRound(playerSelection,computerSelection))
+        console.log(`computer score is ${computerScore}`)
+        console.log(`your score is ${yourScore}`)
     }
+    if (computerScore > yourScore) {
+        console.log("Computer Won,better luck next time!")
+    } else if (yourScore > computerScore) {
+        console.log("Congratulations You Won!")
+    } else {
+        console.log("Its a Tie!")
     }
+    };
